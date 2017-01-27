@@ -1,7 +1,9 @@
 package com.example.flori.diabetiker_gps;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     private void onAnzeigenbtnclicked() {
+        Intent intent = new Intent(this,ShowLogs.class);
+        startActivity(intent);
     }
 
 
@@ -67,8 +72,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                     String.format("%.4f",la),
                     android.text.format.DateFormat.format("DD.MM.YYYY",d.getTime()).toString(),
                     android.text.format.DateFormat.format("HH:mm",d.getTime()).toString());
-
-
+            ((EditText)findViewById(R.id.editText_position)).setText(p.toString());
+            DataBaseHelper dbHelper = new DataBaseHelper(this);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.execSQL(PositionsTbl.STMT_INSERT,new String[]{p.longitude,p.latitude,p.date,p.time});
+            db.close();
         }
     }
 
