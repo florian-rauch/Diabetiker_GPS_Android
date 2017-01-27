@@ -18,6 +18,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(PositionsTbl.SQL_CREATE);
+        db.execSQL(PositionsTbl.STMT_INSERT,new String[]{""+38,""+122,"19.11.2016","06:42"});
+        db.execSQL(PositionsTbl.STMT_INSERT,new String[]{""+55,""+545,"19.11.2017","07:42"});
+        db.execSQL(PositionsTbl.STMT_INSERT,new String[]{""+45353783.535,""+7,"19.13.2026","08:42"});
     }
 
     @Override

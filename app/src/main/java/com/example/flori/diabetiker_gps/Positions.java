@@ -19,8 +19,8 @@ public class Positions {
 
     @Override
     public String toString() {
-        return "longitude='" + longitude + '\n' +
-                ", latitude='" + latitude + '\n' +
-                ", date='" + date + " "+time;
+        return "longitude=" + longitude + '\n' +
+                "latitude=" + latitude + '\n' +
+                "date=" + date + " "+time;
     }
 }
