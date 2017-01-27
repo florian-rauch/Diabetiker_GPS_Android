@@ -23,6 +23,7 @@ public class PositionsTbl {
     public static final String STMT_INSERT="INSERT INTO "+TABLE_NAME+
             "( "+Longitude+", "+Latitude+", "+MyDate+ ", "+Time+") VALUES(?,?,?,?)";
 
+    public static final String STMT_SELECT_ALL="SELECT "+Longitude+","+Latitude+","+MyDate+","+Time+" FROM "+TABLE_NAME;
 
 
 
